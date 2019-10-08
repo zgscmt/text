@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>闪光文字</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0 auto;
+            background: black
+        }
+
+        p  {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 7em;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 20px;
+            /* animation: flicker 1.5s ease-in-out infinite alternate    */
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.5;
+
+        }
+
+        a:hover {
+            color: #ffffffff;
+            animation: flicker 1.5s ease-in-out infinite alternate
+        }
+
+        @keyframes flicker {
+            from {
+                text-shadow: 0 0 10px #ffffff 0 0 20px #ffffff 0 0 30px #ffffff 0 0 40px #FF1177,
+                    0 0 70px #FF1177,
+                    0 0 80px #FF1177,
+                    0 0 100px #FF1177,
+                    0 0 150px #FF1177;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff,
+               0 0 10px #fff,
+               0 0 15px #fff,
+               0 0 20px #FF1177,
+               0 0 35px #FF1177,
+               0 0 40px #FF1177,
+               0 0 50px #FF1177,
+               0 0 75px #FF1177;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p><a href="">HELLO WROLD</a></p>
+    </div>
+</body>
+
+</html>

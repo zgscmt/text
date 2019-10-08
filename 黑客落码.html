@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代码下滑实现黑客效果</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            width: 1000px;
+        }
+
+        #myCanvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="Canvas">
+
+        </canvas>
+    </div>
+    <script>
+        var myCanvas = document.getElementById('Canvas');
+        var ctx = myCanvas.getContext('2d');
+        var cheight = myCanvas.height = 800;
+        var cwitdh = myCanvas.width = 1000;
+        var words = 'qwertyuioplkjhgfdsazxcvbnm<>?"{}[]1234567890`!@#$%^&*~QWERTYUIOPLKJHGFDSAZXVBNM"-+'.split('');
+        var fontColor = 'rgba(0,0,0,0.1)';
+        var fontSize = 16;
+        var drops = [];
+        var column = cwitdh / fontSize;
+        for (var i = 0; i < column; i++) {
+            drops[i] = 1
+        };
+        var randomColor = function () {
+            var num = function () {
+                return Math.floor(Math.random() * 225 + 1)
+            }
+            return `rgb(${num()},${num()},${num()})`
+        }
+        var draw = function () {
+                ctx.save();
+                ctx.fillStyle = randomColor();
+                ctx.font = fontSize + 'px arial'
+                for (var i = 0; i < drops.length; i++) {
+                    var text = words[Math.floor(Math.random() * words.length)];
+                    ctx.fillText (text, i * fontSize, drops[i] * fontSize)
+                    if (drops[i] * fontSize > cheight && Math.random() > 0.98) {
+                        drops[i] = 0
+                    }
+                    drops[i]++;
+                }
+                ctx.restore();
+             }
+                var run = function () {
+                    draw();
+                    ctx.fillStyle = fontColor;
+                    ctx.fillRect(0, 0, cwitdh, cheight);
+                    requestAnimationFrame(run);
+                };
+                run();
+    </script>
+</body>
+
+</html>
